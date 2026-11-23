@@ -1,1 +1,0 @@
-import{h as e}from"./src-CKb07U07.js";var t=class{constructor(e){this.init=e,this.records=this.init()}static{e(this,`ImperativeState`)}reset(){this.records=this.init()}};export{t};
