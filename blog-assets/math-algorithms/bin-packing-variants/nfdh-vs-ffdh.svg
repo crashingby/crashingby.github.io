@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" role="img" aria-labelledby="title desc">
+  <title id="title">宽度为 10 的条带上，NFDH 和 FFDH 的摆放结果</title>
+  <desc id="desc">两图按同一比例绘制，从下往上看。前四个矩形的摆放相同。左图 NFDH 把 R5 放在新开的第 4 层，总高 15。右图 FFDH 把 R5 放在第 2 层的 R3 右侧，总高 13。</desc>
+  <defs>
+    <style>
+      text { font-family: system-ui, "Noto Sans CJK SC", "Microsoft YaHei", "Droid Sans Fallback", sans-serif; fill: #172a40; }
+      .heading { font-size: 26px; font-weight: 700; }
+      .measure { font-size: 19px; fill: #41566d; }
+      .guide { fill: none; stroke: #a2b3c5; stroke-dasharray: 5 5; }
+      .strip { fill: #f5f8fc; }
+      .edge { fill: none; stroke: #526b84; stroke-width: 1.5; }
+      .item { fill: #d8e8f8; stroke: #547da5; stroke-width: 1.5; }
+      .last-item { fill: #fde7b9; stroke: #975b11; stroke-width: 2; }
+      .name { font-size: 22px; font-weight: 700; }
+      .size { font-size: 17px; }
+    </style>
+
+    <!-- Each unit is 22 SVG units. The plots share a baseline at y=426. -->
+    <g id="first-four" text-anchor="middle">
+      <g id="r1" transform="translate(0 294)">
+        <rect class="item" width="88" height="132"/>
+        <text class="name" x="44" y="62">R₁</text>
+        <text class="size" x="44" y="86">4 × 6</text>
+      </g>
+      <g id="r2" transform="translate(88 316)">
+        <rect class="item" width="110" height="110"/>
+        <text class="name" x="55" y="51">R₂</text>
+        <text class="size" x="55" y="75">5 × 5</text>
+      </g>
+      <g id="r3" transform="translate(0 206)">
+        <rect class="item" width="132" height="88"/>
+        <text class="name" x="66" y="40">R₃</text>
+        <text class="size" x="66" y="64">6 × 4</text>
+      </g>
+      <g id="r4" transform="translate(0 140)">
+        <rect class="item" width="176" height="66"/>
+        <text class="name" x="88" y="29">R₄</text>
+        <text class="size" x="88" y="52">8 × 3</text>
+      </g>
+    </g>
+    <g id="r5" text-anchor="middle">
+      <rect class="last-item" width="66" height="44"/>
+      <text class="name" x="33" y="19">R₅</text>
+      <text class="size" x="33" y="37">3 × 2</text>
+    </g>
+  </defs>
+
+  <rect width="560" height="480" rx="12" fill="#ffffff"/>
+  <g text-anchor="middle">
+    <text class="heading" x="158" y="36">NFDH</text>
+    <text class="measure" x="158" y="65">总高 15 · 4 层</text>
+    <text class="heading" x="426" y="36">FFDH</text>
+    <text class="measure" x="426" y="65">总高 13 · 3 层</text>
+  </g>
+
+  <rect class="strip" x="48" y="96" width="220" height="330"/>
+  <rect class="strip" x="316" y="140" width="220" height="286"/>
+  <path class="guide" d="M48 96H536 M48 140H536 M48 206H536 M48 294H536"/>
+  <path class="edge" d="M48 96V426H268V96 M316 140V426H536V140"/>
+
+  <g class="measure" text-anchor="end">
+    <text x="38" y="102">15</text>
+    <text x="38" y="146">13</text>
+    <text x="38" y="212">10</text>
+    <text x="38" y="300">6</text>
+    <text x="38" y="432">0</text>
+  </g>
+
+  <g id="nfdh" transform="translate(48 0)">
+    <use href="#first-four"/>
+    <use href="#r5" x="0" y="96"/>
+  </g>
+  <g id="ffdh" transform="translate(316 0)">
+    <use href="#first-four"/>
+    <use href="#r5" x="132" y="250"/>
+  </g>
+
+  <path class="edge" d="M48 442V452 M48 447H268 M268 442V452 M316 442V452 M316 447H536 M536 442V452"/>
+  <g class="measure" text-anchor="middle">
+    <text x="158" y="471">宽 10</text>
+    <text x="426" y="471">宽 10</text>
+  </g>
+</svg>

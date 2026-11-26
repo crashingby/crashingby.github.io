@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 659" role="img" aria-labelledby="title desc">
+  <title id="title">Skyline Bottom-Left 在 10 × 10 箱子内的放置过程</title>
+  <desc id="desc">空箱的天际线与底边重合。放入 R1 后，左侧升到 4，右侧仍为 0。R2 放在右侧地面，顶边高度为 2，低于左侧备选位置的顶边高度 6。R3 横跨两段时，底边抬到较高的 4，右下方留出 2 × 2 的空洞。</desc>
+  <defs>
+    <style>
+      text { font-family: system-ui, "Noto Sans CJK SC", "Microsoft YaHei", "Droid Sans Fallback", sans-serif; fill: #172a40; }
+      .heading { font-size: 25px; font-weight: 700; }
+      .note { font-size: 19px; fill: #41566d; }
+      .label { font-size: 20px; font-weight: 650; }
+      .size { font-size: 17px; }
+      .tick { font-size: 16px; fill: #41566d; }
+      .box { fill: #f5f8fc; stroke: #526b84; stroke-width: 1.5; }
+      .guide { fill: none; stroke: #b8c6d5; stroke-dasharray: 4 4; }
+      .item { fill: #d8e8f8; stroke: #547da5; stroke-width: 1.5; }
+      .spanning-item { fill: #fde7b9; stroke: #975b11; stroke-width: 1.75; }
+      .alternative { fill: #ffffff; fill-opacity: 0.65; stroke: #526b84; stroke-width: 1.75; stroke-dasharray: 5 4; }
+      .gap { fill: url(#hatch); stroke: #975b11; stroke-width: 1.25; }
+      .skyline { fill: none; stroke: #26766d; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+
+    <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="7" height="7" fill="#fff6e4"/>
+      <path d="M0 0V7" stroke="#bf8443" stroke-width="2"/>
+    </pattern>
+
+    <!-- Each unit is 22 SVG units. Each panel's mathematical origin is at (0, 220). -->
+    <rect id="bin" class="box" width="220" height="220"/>
+    <g id="r1" text-anchor="middle">
+      <rect class="item" x="0" y="132" width="132" height="88"/>
+      <text class="label" x="66" y="169">R₁</text>
+      <text class="size" x="66" y="193">6 × 4</text>
+    </g>
+    <g id="r2" text-anchor="middle">
+      <rect class="item" x="132" y="176" width="88" height="44"/>
+      <text class="label" x="176" y="195">R₂</text>
+      <text class="size" x="176" y="214">4 × 2</text>
+    </g>
+  </defs>
+
+  <rect width="560" height="659" rx="12" fill="#ffffff"/>
+
+  <g id="step-1" transform="translate(34 62)" text-anchor="middle">
+    <text class="heading" x="110" y="-18">1. 空箱</text>
+    <use href="#bin"/>
+    <text class="label" x="110" y="116">10 × 10</text>
+    <path class="skyline" d="M0 220H220"/>
+    <text class="note" x="110" y="248">天际线沿底边，高 0</text>
+  </g>
+
+  <g id="step-2" transform="translate(310 62)" text-anchor="middle">
+    <text class="heading" x="110" y="-18">2. 放入 R₁</text>
+    <use href="#bin"/>
+    <path class="guide" d="M0 132H220"/>
+    <use href="#r1"/>
+    <path class="skyline" d="M0 132H132V220H220"/>
+    <g class="tick" text-anchor="end">
+      <text x="-8" y="138">4</text>
+      <text x="-8" y="226">0</text>
+    </g>
+    <text class="note" x="110" y="248">左段高 4，右段高 0</text>
+  </g>
+
+  <g id="step-3" transform="translate(34 382)" text-anchor="middle">
+    <text class="heading" x="110" y="-18">3. 放入 R₂</text>
+    <use href="#bin"/>
+    <path class="guide" d="M0 88H220 M0 132H220 M0 176H220"/>
+    <use href="#r1"/>
+    <use href="#r2"/>
+    <rect id="r2-alternative" class="alternative" x="0" y="88" width="88" height="44"/>
+    <text class="size" x="44" y="116">备选 R₂</text>
+    <path class="skyline" d="M0 132H132V176H220"/>
+    <g class="tick" text-anchor="end">
+      <text x="-8" y="94">6</text>
+      <text x="-8" y="138">4</text>
+      <text x="-8" y="182">2</text>
+    </g>
+    <text class="note" x="110" y="248">选右侧，R₂ 顶边高 2</text>
+  </g>
+
+  <g id="step-4" transform="translate(310 382)" text-anchor="middle">
+    <text class="heading" x="110" y="-18">4. 放入 R₃</text>
+    <use href="#bin"/>
+    <path class="guide" d="M0 88H220 M0 132H220 M0 176H220"/>
+    <use href="#r1"/>
+    <use href="#r2"/>
+    <rect id="under-r3" class="gap" x="132" y="132" width="44" height="44"/>
+    <rect id="r3" class="spanning-item" x="0" y="88" width="176" height="44"/>
+    <text class="label" x="88" y="117">R₃　8 × 2</text>
+    <path class="skyline" d="M0 88H176V176H220"/>
+    <g class="tick" text-anchor="end">
+      <text x="-8" y="94">6</text>
+      <text x="-8" y="138">4</text>
+      <text x="-8" y="182">2</text>
+    </g>
+    <text class="note" x="110" y="248">斜纹是 2 × 2 的空洞</text>
+  </g>
+</svg>

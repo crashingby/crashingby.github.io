@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="9" fill="#3c6650"/><text x="7" y="33" fill="#f8f7f4" font-family="Georgia,serif" font-size="29" font-weight="bold">cb.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <rect x="1" y="1" width="14" height="14" fill="#04070c"/>
+  <rect x="2" y="0" width="12" height="1" fill="#3dff8e"/>
+  <rect x="2" y="15" width="12" height="1" fill="#3dff8e"/>
+  <rect x="0" y="2" width="1" height="12" fill="#3dff8e"/>
+  <rect x="15" y="2" width="1" height="12" fill="#3dff8e"/>
+  <!-- 'c' -->
+  <path d="M3 5h4v1H4v4h3v1H3z" fill="#3dff8e"/>
+  <!-- 'b' -->
+  <path d="M8 4h1v3h3v4H8zm1 4v2h2V8z" fill="#3fd8ff"/>
+  <!-- '.' -->
+  <rect x="13" y="10" width="1" height="1" fill="#ff4f9b"/>
+</svg>

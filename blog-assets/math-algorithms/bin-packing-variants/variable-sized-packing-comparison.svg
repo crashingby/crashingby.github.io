@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 544" role="img" aria-labelledby="title desc">
+  <title id="title">在线按尺寸分组与离线 FFDLS 的装箱结果</title>
+  <desc id="desc">每条横条表示一只箱子。序列 0.6、0.3、0.3、0.6 中，在线分组用容量为 1.0 的箱子装两件 0.3。FFDLS 将这只箱缩到 0.7，总成本从 2.4 降到 2.1。序列 0.6、0.6、0.6 中，两种方案都用三只容量为 0.7 的箱子，总成本均为 2.1。</desc>
+  <defs>
+    <style>
+      text { font-family: system-ui, "Noto Sans CJK SC", "Microsoft YaHei", "Droid Sans Fallback", sans-serif; fill: #172a40; }
+      .sequence { font-size: 23px; font-weight: 700; }
+      .strategy { font-size: 21px; font-weight: 650; }
+      .value { font-size: 20px; font-weight: 650; }
+      .capacity, .note { font-size: 19px; fill: #41566d; }
+      .total { font-size: 21px; font-weight: 650; }
+      .space { fill: #edf2f7; }
+      .item-large { fill: #d8e8f8; }
+      .item-small { fill: #fde7b9; }
+      .edge { fill: none; stroke: #526b84; stroke-width: 1.4; }
+      .partition { fill: none; stroke: #7590ab; stroke-width: 1.2; }
+      .divider { stroke: #cbd5e1; }
+    </style>
+
+    <!-- A capacity of 1.0 is 200 SVG units. All bars share this scale. -->
+    <g id="item-06">
+      <rect class="item-large" width="120" height="30"/>
+      <text class="value" x="60" y="22" text-anchor="middle">0.6</text>
+    </g>
+    <g id="item-03">
+      <rect class="item-small" width="60" height="30"/>
+      <text class="value" x="30" y="22" text-anchor="middle">0.3</text>
+    </g>
+    <g id="outline-10">
+      <rect class="edge" width="200" height="30"/>
+      <text class="capacity" x="210" y="22">1.0</text>
+    </g>
+    <g id="outline-07">
+      <rect class="edge" width="140" height="30"/>
+      <text class="capacity" x="150" y="22">0.7</text>
+    </g>
+
+    <g id="two-items-03">
+      <use href="#item-03"/>
+      <use href="#item-03" x="60"/>
+      <path class="partition" d="M60 0V30 M120 0V30"/>
+    </g>
+    <g id="two-03-in-10">
+      <rect class="space" width="200" height="30"/>
+      <use href="#two-items-03"/>
+      <use href="#outline-10"/>
+    </g>
+    <g id="two-03-in-07">
+      <rect class="space" width="140" height="30"/>
+      <use href="#two-items-03"/>
+      <use href="#outline-07"/>
+    </g>
+    <g id="only-06-in-07">
+      <rect class="space" width="140" height="30"/>
+      <use href="#item-06"/>
+      <path class="partition" d="M120 0V30"/>
+      <use href="#outline-07"/>
+    </g>
+  </defs>
+
+  <rect width="560" height="544" rx="12" fill="#ffffff"/>
+
+  <text class="sequence" x="28" y="36">到达顺序　0.6 → 0.3 → 0.3 → 0.6</text>
+  <g id="mixed-grouped" transform="translate(28 91)">
+    <text class="strategy" y="-14">在线按尺寸分组</text>
+    <use href="#only-06-in-07"/>
+    <use href="#two-03-in-10" y="40"/>
+    <use href="#only-06-in-07" y="80"/>
+    <text class="total" y="142">总成本 2.4</text>
+  </g>
+  <g id="mixed-ffdls" transform="translate(306 91)">
+    <text class="strategy" y="-14">离线 FFDLS</text>
+    <use href="#only-06-in-07"/>
+    <use href="#only-06-in-07" y="40"/>
+    <use href="#two-03-in-07" y="80"/>
+    <text class="total" y="142">总成本 2.1</text>
+  </g>
+
+  <line class="divider" x1="28" x2="532" y1="255" y2="255"/>
+
+  <text class="sequence" x="28" y="290">到达顺序　0.6 → 0.6 → 0.6</text>
+  <g id="uniform-grouped" transform="translate(28 345)">
+    <text class="strategy" y="-14">在线按尺寸分组</text>
+    <use href="#only-06-in-07"/>
+    <use href="#only-06-in-07" y="40"/>
+    <use href="#only-06-in-07" y="80"/>
+    <text class="total" y="142">总成本 2.1</text>
+  </g>
+  <g id="uniform-ffdls" transform="translate(306 345)">
+    <text class="strategy" y="-14">离线 FFDLS</text>
+    <use href="#only-06-in-07"/>
+    <use href="#only-06-in-07" y="40"/>
+    <use href="#only-06-in-07" y="80"/>
+    <text class="total" y="142">总成本 2.1</text>
+  </g>
+
+  <text class="note" x="280" y="524" text-anchor="middle">浅灰为箱内余量，右侧数字为箱容量</text>
+</svg>

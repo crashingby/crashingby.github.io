@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 659" role="img" aria-labelledby="title desc">
+  <title id="title">MaxRects 在 10 × 10 箱子内的四步摆放过程</title>
+  <desc id="desc">先放入 6 × 4 的 R1，得到右侧和上方两个重叠的空闲矩形。摆放 4 × 5 的 R2 时，右侧位置的 BSSF 分数为 0，上方位置的分数为 1，因此选择右侧。更新空闲列表时，右上方的 4 × 5 区域被上方的 10 × 5 区域完全包含，剪枝后保留上方和左侧两个空闲矩形。</desc>
+  <defs>
+    <style>
+      text { font-family: system-ui, "Noto Sans CJK SC", "Microsoft YaHei", "Droid Sans Fallback", sans-serif; fill: #172a40; }
+      .heading { font-size: 25px; font-weight: 700; }
+      .note { font-size: 19px; fill: #41566d; }
+      .label { font-size: 20px; font-weight: 650; }
+      .size { font-size: 18px; }
+      .box { fill: #f5f8fc; stroke: #526b84; stroke-width: 1.5; }
+      .free-horizontal { fill: #81c9ba; fill-opacity: 0.28; stroke: #397d71; stroke-width: 1.75; }
+      .free-vertical { fill: #aca3d9; fill-opacity: 0.24; stroke: #685ea0; stroke-width: 1.75; stroke-dasharray: 5 3; }
+      .first-item { fill: #d8e8f8; stroke: #547da5; stroke-width: 1.5; }
+      .second-item { fill: #fde7b9; stroke: #975b11; stroke-width: 2; }
+      .alternative { fill: #f6f8fb; fill-opacity: 0.9; stroke: #526b84; stroke-width: 2; stroke-dasharray: 6 4; }
+      .pruned { fill: none; stroke: #ac353b; stroke-width: 2; stroke-dasharray: 6 4; }
+      .pruned-label { fill: #922c33; }
+    </style>
+
+    <!-- Each unit is 22 SVG units. Each panel's mathematical origin is at (0, 220). -->
+    <rect id="bin" class="box" width="220" height="220"/>
+    <g id="first-item" text-anchor="middle">
+      <rect class="first-item" x="0" y="132" width="132" height="88"/>
+      <text class="label" x="66" y="170">R₁</text>
+      <text class="size" x="66" y="195">6 × 4</text>
+    </g>
+    <rect id="chosen-position" class="second-item" x="132" y="110" width="88" height="110"/>
+    <g id="free-after-r1">
+      <rect class="free-horizontal" x="0" y="0" width="220" height="132"/>
+      <rect class="free-vertical" x="132" y="0" width="88" height="220"/>
+    </g>
+  </defs>
+
+  <rect width="560" height="659" rx="12" fill="#ffffff"/>
+
+  <g id="step-1" transform="translate(28 62)" text-anchor="middle">
+    <text class="heading" x="110" y="-18">1. 空箱</text>
+    <use href="#bin"/>
+    <text class="label" x="110" y="105">整箱空闲</text>
+    <text class="size" x="110" y="133">10 × 10</text>
+    <circle cx="0" cy="220" r="3" fill="#172a40"/>
+    <text class="note" x="0" y="248" text-anchor="start">(0, 0)</text>
+  </g>
+
+  <g id="step-2" transform="translate(312 62)" text-anchor="middle">
+    <text class="heading" x="110" y="-18">2. 放入 R₁</text>
+    <use href="#bin"/>
+    <use href="#free-after-r1"/>
+    <use href="#first-item"/>
+    <text class="label" x="66" y="58">上方</text>
+    <text class="size" x="66" y="83">10 × 6</text>
+    <text class="label" x="176" y="72">重叠</text>
+    <text class="label" x="176" y="170">右侧</text>
+    <text class="size" x="176" y="195">4 × 10</text>
+    <text class="note" x="110" y="248">两个空闲矩形都保留</text>
+  </g>
+
+  <g id="step-3" transform="translate(28 382)" text-anchor="middle">
+    <text class="heading" x="110" y="-18">3. BSSF 选位</text>
+    <use href="#bin"/>
+    <use href="#free-after-r1" opacity="0.55"/>
+    <use href="#first-item"/>
+    <rect id="alternative-position" class="alternative" x="0" y="22" width="88" height="110"/>
+    <text class="label" x="44" y="72">R₂</text>
+    <text class="size" x="44" y="97">BSSF 1</text>
+    <use href="#chosen-position"/>
+    <text class="label" x="176" y="159">R₂</text>
+    <text class="size" x="176" y="184">BSSF 0</text>
+    <text class="note" x="110" y="248">0 &lt; 1，选右下角</text>
+  </g>
+
+  <g id="step-4" transform="translate(312 382)" text-anchor="middle">
+    <text class="heading" x="110" y="-18">4. 分裂并剪枝</text>
+    <use href="#bin"/>
+    <rect id="keep-top" class="free-horizontal" x="0" y="0" width="220" height="110"/>
+    <rect id="keep-left" class="free-vertical" x="0" y="0" width="132" height="132"/>
+    <use href="#first-item"/>
+    <use href="#chosen-position"/>
+    <rect id="remove-right" class="pruned" x="132" y="0" width="88" height="110"/>
+    <text class="size" x="65" y="33">上片 10 × 5</text>
+    <text class="size" x="65" y="126">左片 6 × 6</text>
+    <text class="label pruned-label" x="176" y="49">剪掉</text>
+    <text class="size pruned-label" x="176" y="74">4 × 5</text>
+    <text class="label" x="176" y="159">R₂</text>
+    <text class="size" x="176" y="184">4 × 5</text>
+    <text class="note" x="110" y="248">红色虚线框被上片包含</text>
+  </g>
+</svg>

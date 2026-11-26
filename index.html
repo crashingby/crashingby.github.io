@@ -4,17 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Huang Xinying 的个人笔记：GPU 编程、C++、高性能计算与 LLM 系统。" />
-    <meta name="theme-color" content="#f8f7f4" />
+    <meta name="description" content="Crashing By 的像素电路风个人技术站点：GPU 编程、C++、高性能计算、LLM 推理系统与面试指南。" />
+    <meta name="theme-color" content="#04070c" />
     <script>
       try {
         const saved = localStorage.getItem('site-theme');
-        document.documentElement.dataset.theme = saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-      } catch { document.documentElement.dataset.theme = 'light'; }
+        const theme = saved === 'light' || saved === 'dark' ? saved : 'dark';
+        document.documentElement.dataset.theme = theme;
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#04070c' : '#e4ead3');
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
     </script>
     <title>Crashing By — 技术与日常</title>
-    <script type="module" crossorigin src="/assets/index-CeBc1JlY.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DEMq56sp.css">
+    <script type="module" crossorigin src="/assets/index-R_izkpy1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DgZUAwu7.css">
   </head>
   <body>
     <div id="root"></div>
